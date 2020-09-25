@@ -8,15 +8,15 @@ const forecast = (latitude, longitude, callback) => {
         {
         body:{
             error: bodyErorr, 
-            location:{name, region, lat, lon}, 
-            current:{temperature}
-        }}) => {
+            location:{name, region, latitude, longitude}, 
+            current:{temperature,feelslike,humidity}
+        }}={}) => {
         if (error) {
             callback('Unable to connect to location service', undefined);
         } else if (bodyErorr) {
             callback(bodyErorr.type, undefined);
         } else {
-            callback(undefined, {name, region, latitude, longitude, temperature});
+            callback(undefined, {name, region, latitude, longitude, temperature, feelslike,humidity});
         }
     });
 };
